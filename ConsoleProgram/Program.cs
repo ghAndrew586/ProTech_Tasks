@@ -12,9 +12,9 @@ namespace ConsoleProgram
             
             string inputLine = Console.ReadLine();
 
-            while (!Regex.IsMatch(inputLine, "^[a-zA-Z]+$"))
+            while (!Regex.IsMatch(inputLine, "^[a-z]+$"))
             {
-                Console.WriteLine("В строке должны быть только латинские буквы!");
+                Console.WriteLine("В строке должны быть только латинские буквы в нижнем регистре!");
                 inputLine = Console.ReadLine();
             }
 
