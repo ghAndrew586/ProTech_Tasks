@@ -14,7 +14,18 @@ namespace ConsoleProgram
 
             while (!Regex.IsMatch(inputLine, "^[a-z]+$"))
             {
-                Console.WriteLine("В строке должны быть только латинские буквы в нижнем регистре!");
+                if (Regex.Replace(inputLine, " ", "") != "")
+                {
+                    Console.Write("В строке должны быть только латинские буквы в нижнем регистре! Неподходящие символы: ");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(Regex.Replace(inputLine, "[a-z]", ""));
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                else
+                {
+                    Console.WriteLine("Строка не должна быть пустой!");
+                }
+                
                 inputLine = Console.ReadLine();
             }
 
