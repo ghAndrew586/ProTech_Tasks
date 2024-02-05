@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace ConsoleProgram
 {
@@ -8,7 +9,16 @@ namespace ConsoleProgram
         static void Main(string[] args)
         {
             Console.Write("Введите строку: ");
-            char[] mainLine = Console.ReadLine().ToCharArray();
+            
+            string inputLine = Console.ReadLine();
+
+            while (!Regex.IsMatch(inputLine, "^[a-zA-Z]+$"))
+            {
+                Console.WriteLine("В строке должны быть только латинские буквы!");
+                inputLine = Console.ReadLine();
+            }
+
+            char[] mainLine = inputLine.ToCharArray();
 
             Console.Write("Выход: ");
             if (mainLine.Length % 2 != 0)
@@ -25,10 +35,10 @@ namespace ConsoleProgram
                 Console.Write(String.Join("", firstSegment)); Console.WriteLine(String.Join("", lastSegment));
             }
 
-            Console.Write(" . . . Нажмите любую кнопку, чтобы выйти; Space, чтобы перезапустить  . . . ");
+            Console.Write(" . . . Нажмите любую кнопку, чтобы выйти; Enter, чтобы перезапустить  . . . ");
             char endKey = Console.ReadKey().KeyChar;
 
-            if (endKey == ' ')
+            if (endKey == '\r')
             {
                 System.Diagnostics.Process.Start(Assembly.GetExecutingAssembly().Location);
             }
