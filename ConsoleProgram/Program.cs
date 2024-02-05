@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Task_1
+namespace ConsoleProgram
 {
     class Program
     {
